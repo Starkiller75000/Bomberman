@@ -10,7 +10,7 @@
 irrlicht *motor;
 
 Core::Core(irr::u32 width, irr::u32 height) : _menu(), _width(width),
-	_height(height)
+	_height(height), sizeX(int(13)), sizeY(int(11))
 {
 	_device = irr::createDevice(irr::video::EDT_OPENGL,
 		irr::core::dimension2d<irr::u32>(width, height), 32, false,
@@ -26,26 +26,8 @@ Core::~Core()
 void Core::mainDisplay()
 {
 	_menu->mainInit();
-	while (_device->run()) {
-		switch (_menu->loop<Main::main>()) {
-		case Main::PLAY:
-			_menu->stop();
-			ChooseDisplay();
-			break;
-		case Main::CONFIG:
-			_menu->stop();
-			configDisplay();
-			break;
-		case Main::LOAD:
-			_menu->stop();
-			_menu->load();
-			break;
-		case Main::QUIT:
-			return;
-		default:
-			break;
-		}
-	}
+	while (_device->run())
+		checkMainCases();
 }
 
 void Core::configDisplay()
@@ -63,77 +45,28 @@ void Core::configDisplay()
 		default:
 			break;
 		}
+		checkSizeChoosen();
 	}
 }
 
-void Core::Game(int nbPlayer)
+void Core::Game(int nbPlayer, bool loaded)
 {
-	motor = new irrlicht(irr::video::EDT_OPENGL); // linux ? windows
-	game oui(13, 11, _width, _height);
-	std::pair<int, int> tmp;
-	moveDir KeyOne = NOP;
-	moveDir KeyTwo = NOP;
-	moveDir KeyThree = NOP;
-	moveDir KeyFour = NOP;
+	std::pair<int, int> mapSize(sizeX, sizeY);
+	std::pair<int, int> screenSize(_width, _height);
+	motor = new irrlicht(irr::video::EDT_OPENGL, sizeX, sizeY);
+	game oui(mapSize, loaded, screenSize, nbPlayer);
 
-	oui.spawn(nbPlayer); // prendre du menu
 	while (motor->isOk()) {
+		if (motor->save() == irrlicht::Save::SAVE)
+			oui.writeSave();
+		winner = oui.checkWin();
 		oui.checkAllBomb();
-		motor->loop(&oui);
-		motor->save();
-		// touche joueur 1
-		if (oui.getPlayersAlive(0)) {
-			KeyOne = motor->nextKeyOne();
-			if (KeyOne != NOP) {
-				auto p = oui.getBoard();
-				for (auto ob = p.begin(); ob != p.end(); ++ob) {
-					tmp = ob->second->getPosition();
-					if (ob->second->getStatus() == PLAYER && ob->second->getId() == 1)
-						ob->second->movePlayer(KeyOne, &oui);
-				}
-				KeyOne = NOP;
-			}
+		motor->loop(&oui, winner);
+		if (winner == -1) {
+			motor->stopGame();
+			break;
 		}
-		// touche joueur 2
-		if (oui.getPlayersAlive(1)) {
-			KeyTwo = motor->nextKeyTwo();
-			if (KeyTwo != NOP) {
-				auto p = oui.getBoard();
-				for (auto ob = p.begin(); ob != p.end(); ++ob) {
-					tmp = ob->second->getPosition();
-					if (ob->second->getStatus() == PLAYER && ob->second->getId() == 2)
-						ob->second->movePlayer(KeyTwo, &oui);
-				}
-				KeyTwo = NOP;
-			}
-		}
-		// touche joueur 3
-		if (oui.getPlayersAlive(2)) {
-			KeyThree = motor->nextKeyThree();
-			if (KeyThree != NOP) {
-				auto p = oui.getBoard();
-				for (auto ob = p.begin(); ob != p.end(); ++ob) {
-					tmp = ob->second->getPosition();
-					if (ob->second->getStatus() == PLAYER && ob->second->getId() == 3)
-						ob->second->movePlayer(KeyThree, &oui);
-				}
-				KeyThree = NOP;
-			}
-		}
-		// touche joueur 4
-		if (oui.getPlayersAlive(3)) {
-			KeyFour = motor->nextKeyFour();
-			if (KeyFour != NOP) {
-				auto p = oui.getBoard();
-				for (auto ob = p.begin(); ob != p.end(); ++ob) {
-					tmp = ob->second->getPosition();
-					if (ob->second->getStatus() == PLAYER && ob->second->getId() == 4)
-						ob->second->movePlayer(KeyFour, &oui);
-				}
-				KeyFour = NOP;
-			}
-		}
-
+		gameMode(&oui);
 	}
 }
 
@@ -142,22 +75,6 @@ void Core::ChooseDisplay()
 	_menu->menuChooseInit();
 	while (_device->run()) {
 		switch (_menu->loop<Choose::choose>()) {
-		case Choose::SOLO:
-			_menu->close();
-			Game(1);
-			return;
-		case Choose::TWO:
-			_menu->close();
-			Game(2);
-			break;
-		case Choose::THREE:
-			_menu->close();
-			Game(3);
-			break;
-		case Choose::FOUR:
-			_menu->close();
-			Game(4);
-			break;
 		case Choose::BACK:
 			_menu->stop();
 			_menu->mainInit();
@@ -165,5 +82,158 @@ void Core::ChooseDisplay()
 		default:
 			break;
 		}
+		checkGameChoosen();
 	}
+}
+
+void Core::checkMainCases()
+{
+	switch (_menu->loop<Main::main>()) {
+	case Main::PLAY:
+		_menu->stop();
+		ChooseDisplay();
+		break;
+	case Main::CONFIG:
+		_menu->stop();
+		configDisplay();
+		break;
+	case Main::LOAD:
+		_menu->close();
+		nb = _menu->getNbPlayer();
+		Game(nb, true);
+		break;
+	case Main::QUIT:
+		return;
+	default:
+		break;
+	}
+}
+
+void Core::checkSizeChoosen()
+{
+	switch (_menu->loop<Config::config>()) {
+	case Config::SIZE1:
+		sizeX = 13;
+		sizeY = 11;
+		break;
+	case Config::SIZE2:
+		sizeX = 23;
+		sizeY = 21;
+		break;
+	case Config::SIZE3:
+		sizeX = 33;
+		sizeY = 31;
+		break;
+	case Config::SIZE4:
+		sizeX = 43;
+		sizeY = 41;
+		break;
+	default:
+		break;
+	}
+}
+
+void Core::checkGameChoosen()
+{
+	switch (_menu->loop<Choose::choose>()) {
+	case Choose::SOLO:
+		_menu->close();
+		Game(1, false);
+		return;
+	case Choose::TWO:
+		_menu->close();
+		Game(2, false);
+		break;
+	case Choose::THREE:
+		_menu->close();
+		Game(3, false);
+		break;
+	case Choose::FOUR:
+		_menu->close();
+		Game(4, false);
+		break;
+	default:
+		break;
+	}
+}
+
+void Core::backToMenu()
+{
+	_device = irr::createDevice(irr::video::EDT_OPENGL,
+		irr::core::dimension2d<irr::u32>(_width,
+			_height), 32, false,
+		true, false, nullptr);
+	_menu = new Menu(_device, _width, _height);
+}
+
+void Core::player1(game *oui)
+{
+	KeyOne = motor->nextKeyOne();
+	if (KeyOne != NOP) {
+		auto p = oui->getBoard();
+		for (auto &ob : p) {
+			tmp = ob.second->getPosition();
+			if (ob.second->getStatus() == PLAYER &&
+				ob.second->getId() == 1)
+				ob.second->movePlayer(KeyOne, oui);
+		}
+		KeyOne = NOP;
+	}
+}
+
+void Core::player2(game *oui)
+{
+	KeyTwo = motor->nextKeyTwo();
+	if (KeyTwo != NOP) {
+		auto p = oui->getBoard();
+		for (auto &ob : p) {
+			tmp = ob.second->getPosition();
+			if (ob.second->getStatus() == PLAYER &&
+				ob.second->getId() == 2)
+				ob.second->movePlayer(KeyTwo, oui);
+		}
+		KeyTwo = NOP;
+	}
+}
+
+void Core::player3(game *oui)
+{
+	KeyThree = motor->nextKeyThree();
+	if (KeyThree != NOP) {
+		auto p = oui->getBoard();
+		for (auto &ob : p) {
+			tmp = ob.second->getPosition();
+			if (ob.second->getStatus() == PLAYER &&
+				ob.second->getId() == 3)
+				ob.second->movePlayer(KeyThree, oui);
+		}
+		KeyThree = NOP;
+	}
+}
+
+void Core::player4(game *oui)
+{
+	KeyFour = motor->nextKeyFour();
+	if (KeyFour != NOP) {
+		auto p = oui->getBoard();
+		for (auto &ob : p) {
+			tmp = ob.second->getPosition();
+			if (ob.second->getStatus() == PLAYER &&
+				ob.second->getId() == 4)
+				ob.second->movePlayer(KeyFour, oui);
+		}
+		KeyFour = NOP;
+	}
+}
+
+void Core::gameMode(game *oui)
+{
+	if (oui->getPlayersAlive(0))
+		player1(oui);
+	if (oui->getPlayersAlive(1))
+		player2(oui);
+	if (oui->getPlayersAlive(2))
+		player3(oui);
+	if (oui->getPlayersAlive(3))
+		player4(oui);
 }

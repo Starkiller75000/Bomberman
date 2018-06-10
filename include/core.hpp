@@ -9,9 +9,9 @@
 #define BOMBERMAN_CORE_HPP
 
 #include "menu.hpp"
-#include "../indie/inc/element.hpp"
-#include "../indie/inc/irrlicht.hpp"
-#include "../indie/inc/game.hpp"
+#include "element.hpp"
+#include "irrlicht.hpp"
+#include "game.hpp"
 
 class Core
 {
@@ -20,8 +20,17 @@ class Core
 	~Core();
 	void mainDisplay();
 	void configDisplay();
-	void Game(int);
+	void Game(int, bool);
 	void ChooseDisplay();
+	void checkMainCases();
+	void checkSizeChoosen();
+	void checkGameChoosen();
+	void backToMenu();
+	void player1(game *);
+	void player2(game *);
+	void player3(game *);
+	void player4(game *);
+	void gameMode(game *);
 
 	private:
 	Menu *_menu;
@@ -29,7 +38,15 @@ class Core
 	std::map<int, element*> map;
 	irr::u32 _width;
 	irr::u32 _height;
-	irr::scene::ISceneManager *sceneManager;
+	int nb;
+	int sizeX;
+	int sizeY;
+	moveDir KeyOne;
+	moveDir KeyTwo;
+	moveDir KeyThree;
+	moveDir KeyFour;
+	std::pair<int, int> tmp;
+	int winner;
 };
 
 #endif //BOMBERMAN_CORE_HPP

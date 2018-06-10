@@ -8,11 +8,13 @@
 #ifndef BOMBERMAN_MENU_HPP
 #define BOMBERMAN_MENU_HPP
 
-#include <irr/irrlicht.h>
-#include <irrk/irrKlang.h>
+#include <../librairies/irrlicht/include/irrlicht.h>
+#include <../librairies/irrKlang/include/irrKlang.h>
 #include <vector>
-#include "../include/sound.hpp"
+#include "sound.hpp"
 #include <fstream>
+#pragma comment(lib, "irrKlang.lib")
+#pragma comment(lib, "Irrlicht.lib")
 
 namespace Main
 {
@@ -39,17 +41,12 @@ namespace Config
 {
 	enum	config : int
 	{
+		SIZE1,
+		SIZE2,
+		SIZE3,
+		SIZE4,
 		MUTE,
 		BACK
-	};
-}
-
-namespace Load
-{
-	enum load : int
-	{
-		BACK,
-		NONE
 	};
 }
 
@@ -80,8 +77,8 @@ class Menu
 	void menuLoop() const;
 	void menuChooseInit();
 	void stop();
-	Load::load load();
 	void close();
+	int getNbPlayer();
 
 	public:
 	template<typename T>
@@ -108,6 +105,7 @@ class Menu
 	std::vector<irr::gui::IGUIButton*> _buttons;
 	irrklang::ik_f32 sound;
 	Sound mixer;
+	int nb;
 };
 
 #endif //BOMBERMAN_MENU_HPP

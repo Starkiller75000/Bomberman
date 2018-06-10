@@ -8,9 +8,10 @@
 #ifndef PROJECT_SOUND_HPP
 #define PROJECT_SOUND_HPP
 
-#include <irrk/irrKlang.h>
+#include <../librairies/irrKlang/include/irrKlang.h>
 #include <iostream>
 #include <string>
+#pragma comment(lib, "irrKlang.lib")
 
 class	Sound {
 	public:
@@ -25,15 +26,15 @@ class	Sound {
 	public:
 	Sound();
 	~Sound();
-	irrklang::ISoundEngine* getEngine();
-	irrklang::ISound*	getSound();
-	Sound::type 			getType();
+	irrklang::ISoundEngine	*getEngine();
+	irrklang::ISound	*getSound();
+	Sound::type		getType();
 	void			player(Sound::type);
 	void			stopMusic();
 
 	private:
-	irrklang::ISoundEngine* engine;
-	irrklang::ISound*	sound;
+	irrklang::ISoundEngine	*engine;
+	irrklang::ISound	*sound;
 	Sound::type		tipe;
 
 };

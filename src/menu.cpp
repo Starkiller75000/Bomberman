@@ -16,7 +16,7 @@ Menu::Menu(irr::IrrlichtDevice *device, irr::u32 width, irr::u32 height) :
 	_width(width), _height(height), _GUI(_device->getGUIEnvironment()),
 	_font(_GUI->getFont("assets/font/fontlucida.png")),
 	_buttons(std::vector<irr::gui::IGUIButton*>()),
-	sound(int(1)), mixer(Sound())
+	sound(int(1)), mixer(Sound()), nb(int(0))
 {
 	irr::gui::IGUISkin *skin;
 
@@ -61,7 +61,7 @@ void Menu::menuLoop() const
 	displayTitle();
 	_driver->beginScene(true, true);
 	_driver->draw2DImage(_background, irr::core::position2d<irr::s32>(0, 0),
-		irr::core::rect<irr::s32>(0, 0, 1550, 800), nullptr,
+		irr::core::rect<irr::s32>(0, 0, _width, _height), nullptr,
 		irr::video::SColor(255, 255, 255, 255), true);
 	_device->getSceneManager()->drawAll();
 	_GUI->drawAll();
@@ -85,6 +85,10 @@ void Menu::configInit()
 {
 	mixer.stopMusic();
 	mixer.player(Sound::MENU);
+	createButton(irr::core::rect<irr::s32>(500, 150, 950, 220), L"13 X 11");
+	createButton(irr::core::rect<irr::s32>(500, 250, 950, 320), L"23 X 21");
+	createButton(irr::core::rect<irr::s32>(500, 350, 950, 420), L"33 X 31");
+	createButton(irr::core::rect<irr::s32>(500, 450, 950, 520), L"43 X 41");
 	createButton(irr::core::rect<irr::s32>(500, 550, 950, 620), L"MUTE");
 	createButton(irr::core::rect<irr::s32>(500, 650, 950, 720), L"BACK");
 }
@@ -113,22 +117,22 @@ void Menu::menuChooseInit()
 	createButton(irr::core::rect<irr::s32>(600, 650, 850, 720), L"RETURN");
 }
 
-Load::load Menu::load()
-{
-	std::ifstream ifile("saves/bomberman.irr");
-
-	if (!ifile) {
-		_GUI->addMessageBox(L"Error", L"The file bomberman.irr doesn't "
-					      "exist try to save first before "
-	   "trying to load the game", true,
-			irr::gui::EMBF_OK);
-		return (Load::load::BACK);
-	}
-	return (Load::load::NONE);
-}
-
 void Menu::close()
 {
 	_device->closeDevice();
 	_device->drop();
+}
+
+
+int Menu::getNbPlayer()
+{
+	mixer.stopMusic();
+	mixer.player(Sound::GAME);
+	std::fstream f("saves/file1.bmb", std::fstream::in);
+	std::string s;
+	getline(f, s, '\0');
+	f.close();
+
+	nb = s[0] - '0';
+	return nb;
 }

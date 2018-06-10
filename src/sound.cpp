@@ -1,7 +1,7 @@
 //
 // EPITECH PROJECT, 2018
 // Project
-//File description:
+// File description:
 // Created by bertag_l,
 //
 
@@ -17,12 +17,12 @@ Sound::~Sound()
 {
 }
 
-irrklang::ISoundEngine * Sound::getEngine()
+irrklang::ISoundEngine *Sound::getEngine()
 {
 	return engine;
 }
 
-irrklang::ISound * Sound::getSound()
+irrklang::ISound *Sound::getSound()
 {
 	return sound;
 }
