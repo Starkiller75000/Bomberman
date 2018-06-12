@@ -1,0 +1,7 @@
+/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/CMakeFiles/install/strip.dir
+/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/CMakeFiles/install/local.dir
+/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/CMakeFiles/install.dir
+/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/CMakeFiles/bomberman.dir
+/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/CMakeFiles/list_install_components.dir
+/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/CMakeFiles/rebuild_cache.dir

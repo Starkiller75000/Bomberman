@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="bomberman"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bomberman">
+				<Option output="/home/Fedora28_VM_MAC/cpp_indie_studio/bomberman" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/.."/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/Fedora28_VM_MAC/cpp_indie_studio/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/x86_64-redhat-linux"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 bomberman"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bomberman/fast">
+				<Option output="/home/Fedora28_VM_MAC/cpp_indie_studio/bomberman" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/.."/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/Fedora28_VM_MAC/cpp_indie_studio/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/x86_64-redhat-linux"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/../../../../include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 bomberman/fast"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/home/Fedora28_VM_MAC/cpp_indie_studio/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/bomb.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/core.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/element.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/event.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/fire.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/game.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/godWall.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/irrlicht.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/main.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/menu.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/player.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/playerIa.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/powerUp.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/sound.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/src/wall.cpp">
+			<Option target="bomberman"/>
+		</Unit>
+		<Unit filename="/home/Fedora28_VM_MAC/cpp_indie_studio/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
